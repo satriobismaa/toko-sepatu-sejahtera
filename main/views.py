@@ -1,10 +1,10 @@
 from django.shortcuts import render
+from .models import Product
 
-def show_main(request):
+def show_products(request):
+    products = Product.objects.all()
     context = {
-        'npm' : '2406355136',  # Ubah sesuai dengan npm kamu
-        'name': 'Bisma Zharfan SW',
-        'class': 'PBP B'
+        'products': products
     }
 
     return render(request, "main.html", context)
