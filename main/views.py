@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from .models import Product
 
-def show_products(request):
-    products = Product.objects.all()
+def show_info(request):
     context = {
-        'products': products
+        'app_name': 'Toko Sepatu Sejahtera',
+        'name': 'Bisma Zharfan Satryo Wibowo',
+        'class': 'PBP B'
     }
 
     return render(request, "main.html", context)

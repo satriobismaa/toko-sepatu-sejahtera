@@ -3,18 +3,8 @@
     <title>Toko Sepatu Sejahtera</title>
 </head>
 <body>
-    <h1>Daftar Produk</h1>
-    <ul>
-        {% for product in products %}
-        <li>
-            <h5>Nama: {{ product.name }}</h5>
-            <p>Merek: {{ product.brand }}</p>
-            <p>Harga: {{ product.price }}</p>
-            <p>Rating: {{ product.rating }}</p>
-            <p>Deskripsi: {{ product.description }}</p>
-            <img src="{{ product.thumbnail }}" alt="{{ product.name }}">
-        </li>
-        {% endfor %}
-    </ul>
+    <h1>{{ app_name }}</h1>
+    <p>Nama: {{ name }}</p>
+    <p>Kelas: {{ class }}</p>
 </body>
 </html>
