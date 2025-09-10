@@ -59,7 +59,7 @@ Urutan alur kerja Django adalah sebagai berikut:
     terstruktur dan rapih dalam bentuk .html
 5.  Terakhir, Django akan mengirimkan HTTP Response dalam bentuk html yang pengguna bisa lihat di 
     browser mereka
-
+Reference: PPT 02 - Introduction to The Internet and Web Framework
 
 
 Jelaskan peran settings.py dalam proyek Django!
