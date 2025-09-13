@@ -112,6 +112,7 @@ Kalau dari saya, tidak ada, karena dari web tutorial nya sudah sangat jelas dari
             <li>JSON lebih efisien untuk pertukaran data di aplikasi web/mobile yang butuh kecepatan</li>
         </ol>
     </li>
+    <li>
     Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?
     Method is_valid() digunakan untuk memvalidasi data yang diinput user, seperti:
         <ol>
@@ -166,6 +167,10 @@ Kalau dari saya, tidak ada, karena dari web tutorial nya sudah sangat jelas dari
             <li>
             Membuat halaman yang menampilkan detail dari setiap data objek model.
             Di dalam blok template base.html, pertama buat button back to product list yang mengembalikan ke halaman utama. Dibawahnya tampilkan product_name dan atribut-atribut lainnya, seperti jika dia is_featured, price, rating, brand, dan juga kapan produknya ditambahkan. Dibawahnya tampilkan juga thumbnail, jika produk memilikinya. Terakhir buat blok paragraf untuk menyimpan product.description
+            </li>
+            <li>
+            Apakah ada feedback untuk asdos di tutorial 2 yang sudah kalian kerjakan sebelumnya?
+            Kalau dari saya, tidak ada, karena dari web tutorial nya sudah sangat jelas dari step-by-step nya, lalu asisten dosennya pun selalu ada buat ngebantu kita kalo ada yang bermasalah.
             </li>
         </ol>
     </li>
