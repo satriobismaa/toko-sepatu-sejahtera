@@ -53,7 +53,8 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
 
 
 Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
-![alt text](image.png)
+<img src="images/image.png" alt="Foto" width="700">
+
 Urutan alur kerja Django adalah sebagai berikut:
 1.  Pengguna mengetikkan URL di browser yang akan mengirimkan HTTP request ke server web
 2.  HTTP request akan diterima oleh urls.py yang akan mencocokkan dengan pola URL dengan view yang tepat
@@ -129,6 +130,7 @@ Kalau dari saya, tidak ada, karena dari web tutorial nya sudah sangat jelas dari
         <li>Menjadi rentan terhadap serangan csrf, yaitu penyerang dapat membuat website yang berbahaya dan diam-diam mengirim request POST ke website kita atas nama pengguna yang ingin login</li>
         <li>Tidak mempunyai validasi keaslian request, server tidak bisa tahu apakah request POST datang dari form asli di website kita atau dari pihak ketiga.</li>
         <li>Menambah resiko manipulasi data, misalnya: ubah password, kirim pesan, bahkan transfer saldo bisa dilakukan tanpa sepengetahuan user.</li>
+        </ol>
     Penyerang dapat memanfaatkan hal ini dengan membuat website palsu (misal kita login ke bank.com (sudah ada session/cookie yang aktif)), lalu di website palsu itu ada form tersembunyi yang mengirim request POST ke bank.com untuk transfer uang ke akun penyerang.
     Kalau kita (yang sedang login di bank.com) tanpa sadar mengunjungi situs palsu itu:
         1. Browser otomatis mengirim cookie session bank.com + request POST ke server bank.com.
@@ -176,10 +178,10 @@ Kalau dari saya, tidak ada, karena dari web tutorial nya sudah sangat jelas dari
     </li>
     <li>
     Mengakses keempat URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
-    ![alt text](images/postman_json_id.png)
-    ![alt text](images/postman_json.png)
-    ![alt text](images/postman_xml_id.png)
-    ![alt text](images/postman_xml.png)
+    <img src="images/postman_json_id.png" alt="Foto" width="1000">
+    <img src="images/postman_json.png" alt="Foto" width="1000">
+    <img src="images/postman_xml_id.png" alt="Foto" width="1000">
+    <img src="images/postman_xml.png" alt="Foto" width="1000">
     </li>
 </ol>
 
@@ -191,12 +193,14 @@ Kalau dari saya, tidak ada, karena dari web tutorial nya sudah sangat jelas dari
 <ol>
 <li>
 Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
+
 Django AuthenticationForm adalah form bawaan dari Django yang digunakan untuk menangani proses autentikasi pengguna, seperti login. Form ini menyediakan validasi standar untuk username dan password, serta metode untuk memeriksa kredensial pengguna terhadap database.
 Form ini terhubung dengan django sehingga langsung bisa dipakai untuk:
     <ol>
         <li>Menerima username dan password dari pengguna</li>
         <li>Memverifikasi kredensial ke database</li>
         <li>Memastikan akun yang dimasukkan aktif dan valid</li>
+    </ol>
 Kelebihan:
     <ol>
         <li>Mudah digunakan: Form ini sudah siap pakai, sehingga developer tidak perlu membuat form login dari awal.</li>
@@ -213,6 +217,7 @@ Kekurangan:
 </li>
 <li>
 Apa perbedaan antara autentikasi dan otorisasi? Bagaiamana Django mengimplementasikan kedua konsep tersebut?
+
 Autentikasi diibaratkan seperti apakah user ini benar-benar merupakan user yang diklaim orang tersebut. Biasanya prosesnya menggunakan username, password, token email, dll. Jika sudah dipastikan kalau orang tersebut merupakan user yang sesuai, maka sistem akan mengenalinya sebagai objek user
 Sedangkan, otorisasi diibaratkan seperti apakah user ini boleh melakukan hal tertentu ini setelah dikenali. Proses otorisasi berarti menentukan hak akses hak akses (permissions) pengguna terhadap resource (misalnya view, model, atau data tertentu).
 Django mengimplementasikan konsep autentikasi dengan menyediakan sistem authentication pada django.contrib.auth. Komponen dari sistem ini, yaitu
@@ -225,13 +230,14 @@ Sementara itu, Django mengimplementasikan konsep otorisasi salah satunya dengan 
 </li>
 <li>
 Apa saja kelebihan dan kekurangan session dan cookies dalam konteks menyimpan state di aplikasi web?
+
 Kelebihan dan kekurangan session:
     <ol>
         <li>Kelebihan:
             <ol>
                 <li>Keamanan: Data session disimpan di server, sehingga lebih aman dari manipulasi oleh pengguna.</li>
                 <li>Ukuran data: Session dapat menyimpan data yang lebih besar dibanding cookies karena tidak ada batasan ukuran seperti pada cookies.</li>
-                <li>Meningkatkan pengalaman pengguna: Session memungkinkan penyimpanan informasi pengguna yang lebih kompleks, seperti keranjang belanja, tanpa membebani klien.</li>
+                <li>Meningkatkan pengalaman pengguna: Session memungkinkan penyimpanan informasi pengguna yang lebih kompleks, seperti keranjang belanja, tanpa membebani v.</li>
             </ol>
         </li>
         <li>Kekurangan:
@@ -262,6 +268,7 @@ Kelebihan dan kekurangan cookies:
 </li>
 <li>
 Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? Bagaimana Django menangani hal tersebut?
+
 Secara default, penggunaan cookies tidak sepenuhnya aman dalam pengembangan web karena ada beberapa risiko potensial yang harus diwaspadai, seperti:
     <ol>
         <li>Serangan Cross-Site Scripting (XSS): Jika situs rentan terhadap XSS, penyerang dapat menyisipkan skrip berbahaya yang mencuri cookies pengguna.</li>
@@ -293,6 +300,6 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
     </ol>
 </li>
 </ol>
-![Picture1](images/produk_akun1.png)
-![Picture2](images/produk_akun2.png)
+<img src="images/produk_akun1.png" alt="Foto" width="1000">
+<img src="images/produk_akun2.png" alt="Foto" width="1000">
 </details>
