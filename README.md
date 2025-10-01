@@ -303,3 +303,164 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
 <img src="images/produk_akun1.png" alt="Foto" width="1000">
 <img src="images/produk_akun2.png" alt="Foto" width="1000">
 </details>
+
+<details>
+<Summary><b>Tugas 5</b></Summary>
+    <ol>
+    <li>Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+    <br>
+    <ol>
+        <li><b>Urutan prioritas</b> pengambilan CSS selector adalah sebagai berikut:
+            <ol>    
+                <li>!important (override semua aturan)</li>
+                <li>Inline Style (style attribute pada elemen HTML)</li>
+                <li>ID Selector (#id)</li>
+                <li>Class Selector (.class), Attribute</li>
+                <li>Element Selector (tagname)</li>
+                <li>* (universal selector)</li>                                                     
+            </ol>
+        Jika terdapat beberapa selector yang sama, maka yang diutamakan adalah selector yang paling akhir ditulis.
+        </li>
+        <li><b>Skor Specificity:</b>
+        Bisa dibayangkan seperti nilai angka dengan format (a, b, c, d):
+            <ol>
+                <li>a = jumlah inline style</li>
+                <li>b = jumlah ID Selector</li>
+                <li>c = jumlah Class Selector, Attribute, pseudo-class</li>
+                <li>d = jumlah Element Selector, pseudo-element</li>
+            </ol>
+            Contoh:
+            <ul>
+                <li>div → (0,0,0,1)</li>
+                <li>.btn.primary → (0,0,2,0)</li>
+                <li>#header .nav li → (0,1,1,1)</li>
+                <li>style="..." → (1,0,0,0)</li>
+            </ul>
+            Semakin besar angka di depan, semakin tinggi prioritas.
+        </li>
+    </ol>
+    </li>
+    <br>
+    <li>Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+    <br>
+    <b>Responsive Web Design (RWD)</b> adalah pendekatan desain web yang bertujuan untuk membuat halaman web dapat <b>menyesuaikan tampilannya secara optimal di berbagai perangkat dan ukuran layar</b>, mulai dari desktop, tablet, hingga smartphone. Konsep ini penting karena:
+    <ol>
+        <li><b>Pengalaman Pengguna yang Konsisten:</b> Dengan RWD, pengguna mendapatkan pengalaman yang konsisten dan nyaman saat mengakses situs web di berbagai perangkat.</li>
+        <li><b>Aksesibilitas yang Lebih Baik:</b> Situs web yang responsif dapat diakses dengan baik oleh pengguna dengan berbagai perangkat, termasuk mereka yang menggunakan perangkat dengan layar kecil atau koneksi internet lambat.</li>
+        <li><b>SEO (Search Engine Optimization):</b> Mesin pencari seperti Google lebih menyukai situs web yang responsif, sehingga dapat meningkatkan peringkat pencarian dan visibilitas situs.</li>
+        <li><b>Efisiensi Pengembangan:</b> Dengan RWD, pengembang hanya perlu membuat satu versi situs web yang dapat menyesuaikan diri dengan berbagai perangkat, mengurangi kebutuhan untuk membuat versi terpisah untuk desktop dan mobile.</li>
+    </ol>
+    <br>
+    Contoh Aplikasi yang Sudah Menerapkan Responsive Design:
+    <ul>
+        <li><b>Tokopedia, Shopee</b>: Saat dibuka di HP, menu navigasi berubah jadi ikon hamburger, grid produk jadi 2 kolom, dan gambar lebih ringan. Hal ini agar transaksi tetap mudah dilakukan di layar kecil yang merupakan mayoritas penggunananya.</li>
+        <li><b>Wikipedia</b>: Artikel menyesuaikan lebar layar, teks tetap terbaca dengan font proporsional. Agar pengguna dapat mengakses informasi dengan nyaman di berbagai perangkat.</li>
+    </ul>
+    <br>
+    Contoh Aplikasi yang Belum Menerapkan Responsive Design:
+    <ul>
+        <li><b>Web kampus lama / portal akademiku</b>: Ketika dibuka di HP, harus zoom in–out manual, tabel kepotong, tombol sangat kecil. Hal ini dikarenakan website tersebut biasanya dibuat dengan desain fixed-width lama (misalnya hanya cocok untuk layar 1024px).</li>
+        <li><b>Website pemerintah/instansi lama</b>: Masih banyak yang layout-nya fix, tidak pakai media query CSS yang akibatnya pengguna smartphone (yang mayoritas di Indonesia) akan kesulitan mengakses informasi publik.</li>
+    </ul>
+    </li>
+    <br>
+    <li>Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+    <br>
+    <b>Box model</b> pada CSS bisa dibayangkan sebagai kotak yang membungkus setiap elemen HTML. Box model terdiri dari beberapa bagian, yaitu:
+    <ol>
+        <li><b>Content:</b> Area di mana konten (teks, gambar, dll) ditampilkan.</li>
+        <li><b>Padding:</b> Tempat untuk mengosongkan area di sekitar konten (transparan). Padding bisa diatur dengan properti CSS <code>padding</code>. Contoh: <code>padding: 10px;</code> menambahkan padding 10px di semua sisi.</li>
+        <li><b>Border:</b> Garis tepian yang mengelilingi padding dan konten.  Border bisa diatur dengan properti CSS <code>border</code>. Contoh: <code>border: 2px solid black;</code> menambahkan border hitam solid setebal 2px.</li>
+        <li><b>Margin:</b> Ruang di luar border yang memisahkan elemen dari elemen lain di sekitarnya. Margin menambah jarak antar elemen. Margin bisa diatur dengan properti CSS <code>margin</code>. Contoh: <code>margin: 15px;</code> menambahkan margin 15px di semua sisi.</li>
+    </ol>
+    </li>
+    <br>
+    <li>Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+    <br>
+    <b>Flexbox</b> (Flexible Box Layout) adalah <b>metode layout satu dimensi</b> yang dirancang untuk <b>mengatur elemen dalam satu baris (row) atau satu kolom (column)</b>. Flexbox sangat berguna untuk membuat tata letak yang responsif dan dinamis, di mana elemen dapat dengan mudah disusun ulang, diperbesar, atau diperkecil sesuai dengan ukuran layar. Beberapa kegunaan flexbox antara lain:
+    <ol>
+        <li>Menyusun elemen secara horizontal atau vertikal dengan mudah.</li>
+        <li>Mengatur jarak antar elemen secara otomatis.</li>
+        <li>Menjaga elemen tetap sejajar dan terpusat.</li>
+        <li>Membuat tata letak yang responsif tanpa perlu media query yang rumit.</li>
+    </ol>
+    Sedangkan, <b>Grid Layout</b> adalah <b>metode layout dua dimensi</b> yang memungkinkan pengaturan elemen dalam <b>baris dan kolom</b>. Grid layout sangat berguna untuk membuat tata letak yang kompleks dan terstruktur, di mana elemen dapat ditempatkan di berbagai area grid. Beberapa kegunaan grid layout antara lain:
+    <ol>
+        <li>Membuat tata letak yang lebih kompleks dengan kontrol penuh atas baris dan kolom.</li>
+        <li>Mengatur elemen dalam area grid yang spesifik.</li>
+        <li>Membuat desain yang responsif dengan mudah menggunakan media query.</li>
+    </ol>
+    Keduanya, flexbox dan grid layout, sangat membantu dalam menciptakan desain web yang modern, responsif, dan mudah diatur.
+    </li>
+    <br>
+    <li>Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+    <br>
+    <ol>
+        <li> Implementasikan fungsi untuk menghapus dan mengedit product.
+        <br>
+        Pertama, buat fungsi delete_product di views.py yang menerima parameter request dan product_id. Di dalam fungsi tersebut, gunakan get_object_or_404(Product, pk=product_id) untuk mendapatkan produk berdasarkan id. Setelah itu, panggil method delete() pada objek produk tersebut untuk menghapusnya dari database. Terakhir, redirect ke halaman utama setelah penghapusan berhasil. Jangan lupa juga untuk menambahkan tombol delete di main.html, di dalam blok if yang memastikan bahwa user sekarang ini merupakan creatornya dan tambahkan juga path delete_product di urls.py
+        <br>
+        <br>
+        Setelah itu, buat fungsi edit_product di views.py yang juga menerima parameter request dan product_id. Di dalam fungsi tersebut, dapatkan objek produk menggunakan get_object_or_404(Product, pk=product_id). Jika request method adalah POST, buat instance ProductForm dengan data dari request.POST dan instance produk yang ingin diedit. Jika form valid, simpan perubahan dan redirect ke halaman utama. Jika request method bukan POST, buat instance ProductForm dengan instance produk untuk menampilkan data yang sudah ada di form. Buat juga halaman edit_product.html untuk melakukan edit produk tersebut di direktori templates. Terakhir, buat tombol edit di main.html dalam blok if yang sama dengan tombol delete, serta tambahkan juga path edit_product di urls.py
+        </li>
+        <br>
+        <li>
+        Kustomisasi desain pada template HTML yang telah dibuat pada tugas-tugas sebelumnya menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut:
+        <ul>
+            <li> Kustomisasi halaman login, register, tambah product, edit product, dan detail product semenarik mungkin.
+            <br>
+            <ol>
+                <li>Tambahkan tag <<code>meta name="viewport"</code>> di dalam template/base.html untuk mendukung responsive design.
+                </li>
+                <li>Tambahkan script ke base.html untuk menyambungkan template django dengan taiwind, yaitu: <<code>script src="https://cdn.tailwindcss.com"/script</code>>
+                </li>
+                <li>Buat file CSS baru di dalam direktori static dengan nama global.css. Setelah itu, hubungkan file CSS tersebut di base.html di dalam tag <<code>head</code>> dengan menambahkan <<code>link rel="stylesheet" href="{% static 'global.css' %}"</code>>. 
+                </li>
+                <li>
+                Setelah itu, buat styling untuk halaman login dan register dengan menambahkan background color, mengatur ukuran form, menambahkan padding, border-radius, dan box-shadow agar form terlihat lebih menarik. 
+                </li>
+                <li>
+                Lalu, buat styling untuk halaman tambah product dan edit product dengan mengatur ukuran form, menambahkan padding, border-radius, dan box-shadow. 
+                </li>
+                <li>
+                Terakhir, buat styling untuk halaman detail product dengan mengatur layout menggunakan flexbox atau grid layout agar informasi produk ditampilkan dengan rapi.
+                </li>
+            </ol>
+            </li>
+            <li> Kustomisasi halaman daftar product menjadi lebih menarik dan responsive. Kemudian, perhatikan kondisi berikut:
+            <ul>
+                <li>Jika pada aplikasi belum ada product yang tersimpan, halaman daftar product akan menampilkan gambar dan pesan bahwa belum ada product yang terdaftar.
+                </li>
+                <li>Jika sudah ada product yang tersimpan, halaman daftar product akan menampilkan detail setiap product dengan menggunakan card
+                </li>
+            </ul>
+            <br>
+            <ol>
+                <li>Buat halaman baru di dalam direktori templates/main dengan nama card_product.html. Halaman ini akan digunakan untuk menampilkan setiap produk dalam bentuk card. 
+                </li>
+                <li>Di dalam card_product.html, buat struktur HTML untuk menampilkan informasi produk seperti nama, harga, rating, brand, dan thumbnail. Gunakan class Tailwind CSS untuk membuat tampilan card yang menarik.
+                </li> 
+                <li>Di dalam main.html, tambahkan blok if untuk memeriksa apakah product_list kosong. Jika kosong, tampilkan gambar dan pesan bahwa belum ada produk yang terdaftar. Sedangkan, jika ada isinya loop semua produk yang ada di product_list menggunakan card_product.html yang sebelumnya sudah dibuat. Gunakan class Tailwind CSS untuk mengatur tampilan pesan tersebut.
+                </li>
+            </ol>
+            </li>
+            <li> Untuk setiap card product, buatlah dua buah button untuk mengedit dan menghapus product pada card tersebut!
+            <br>
+            Pada card_product.html, di dalam blok if yang memeriksa apakah user sekarang ini merupakan creatornya, buat sebuah flex-space yang berisi dua tombol, yaitu tombol edit dan delete. Kedua tombol ini akan menjalankan fungsi edit_product dan delete_product. Gunakan class Tailwind CSS untuk membuat tampilan tombol yang menarik.
+            </li>
+            <br>
+            <li>Buatlah navigation bar (navbar) untuk fitur-fitur pada aplikasi yang responsive terhadap perbedaan ukuran device, khususnya mobile dan desktop.
+            <ol>
+                <li>Pertama, buat halaman navbar.html di dalam direktori templates root. Halaman ini akan digunakan untuk menampilkan navigation bar pada aplikasi
+                </li>
+                <li>Di dalam navbar.html, buat struktur HTML untuk navigation bar yang berisi link ke halaman utama, tambah product, login, register, dan logout. Gunakan class Tailwind CSS untuk membuat tampilan navbar yang menarik dan responsive.
+                </li>
+                <li>Terakhir, di dalam base.html, tambahkan include navbar.html di dalam blok <<code>body</code>> agar navigation bar ditampilkan di semua halaman aplikasi.
+                </li>
+            </ol>
+            </li>
+        </ul>
+        </li>
+    </ol>
+</details>   
+
