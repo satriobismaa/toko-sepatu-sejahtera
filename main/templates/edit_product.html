@@ -11,11 +11,14 @@
     
     <!-- Back Navigation -->
     <div class="mb-6">
-      <a href="{% url 'main:show_main' %}" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-        ← Back to Home
+      <a href="{% url 'main:show_product' product.id %}" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+        ← Back to Product
       </a>
     </div>
     
+    <!-- Alert Box -->
+    <div id="alert-box" class="hidden mb-6"></div>
+
     <!-- Form -->
     <div class="bg-white rounded-lg border border-gray-200 p-6 sm:p-8 form-style">
       <div class="mb-8">
@@ -23,7 +26,7 @@
         <p class="text-gray-600">Update your product details</p>
       </div>
       
-      <form method="POST" class="space-y-6">
+      <form id="edit-product-form" method="POST" class="space-y-6">
         {% csrf_token %}
         {% for field in form %}
           <div>
@@ -54,4 +57,67 @@
     </div>
   </div>
 </div>
+
+<script>
+document.getElementById('edit-product-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+  const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  const alertBox = document.getElementById('alert-box');
+
+  // Reset alert box
+  alertBox.classList.add('hidden');
+  alertBox.innerHTML = '';
+
+  try {
+    const response = await fetch(window.location.href, {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrfToken,
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      alertBox.innerHTML = `
+        <div class="bg-green-100 border border-green-300 text-green-800 px-4 py-3 rounded-lg">
+          ✅ ${data.message}
+        </div>
+      `;
+      alertBox.classList.remove('hidden');
+
+      // Redirect otomatis setelah 1.5 detik (optional)
+      setTimeout(() => {
+        window.location.href = "{% url 'main:show_product' product.id %}";
+      }, 500);
+    } else {
+      let errorList = '';
+      for (const [field, errors] of Object.entries(data.errors)) {
+        errorList += `<li>${field}: ${errors.join(', ')}</li>`;
+      }
+      alertBox.innerHTML = `
+        <div class="bg-red-100 border border-red-300 text-red-800 px-4 py-3 rounded-lg">
+          <strong>Failed to update product:</strong>
+          <ul class="list-disc pl-5 mt-1">${errorList}</ul>
+        </div>
+      `;
+      alertBox.classList.remove('hidden');
+    }
+
+  } catch (err) {
+    console.error(err);
+    alertBox.innerHTML = `
+      <div class="bg-red-100 border border-red-300 text-red-800 px-4 py-3 rounded-lg">
+        An unexpected error occurred. Please try again.
+      </div>
+    `;
+    alertBox.classList.remove('hidden');
+  }
+});
+</script>
 {% endblock %}

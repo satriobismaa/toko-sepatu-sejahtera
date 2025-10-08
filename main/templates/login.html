@@ -10,7 +10,7 @@
     <div class="bg-white rounded-lg border border-gray-200 p-6 sm:p-8 form-style">
       <div class="text-center mb-8">
         <h1 class="text-2xl font-bold text-gray-900 mb-2">Sign In</h1>
-        <p class="text-gray-600">Welcome back to Football News</p>
+        <p class="text-gray-600">Welcome back to Toko Sepatu Sejahtera</p>
       </div>
 
       <!-- Form Errors Display -->
@@ -102,4 +102,55 @@
     </div>
   </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault(); // cegah reload
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("{% url 'main:login' %}", {
+        method: "POST",
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        showToast("Success", "Successfully logged in!", "success");
+        // redirect setelah 1 detik
+        setTimeout(() => {
+          window.location.href = data.redirect_url;
+        }, 500);
+      } else {
+        // tampilkan error tanpa reload
+        let errorBox = document.querySelector("#error-messages");
+        if (!errorBox) {
+          errorBox = document.createElement("div");
+          errorBox.id = "error-messages";
+          errorBox.classList.add("mt-4");
+          form.prepend(errorBox);
+        }
+        errorBox.innerHTML = "";
+        if (data.non_field_errors && data.non_field_errors.length) {
+          errorBox.innerHTML += `<div class="text-red-600">${data.non_field_errors.join('<br>')}</div>`;
+        }
+        for (const field in data.errors) {
+          errorBox.innerHTML += `<div class="text-red-600">${field}: ${data.errors[field].join('<br>')}</div>`;
+        }
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      showToast("Error", "An error occurred. Please try again later.", "error");
+    }
+  });
+});
+</script>
+
 {% endblock content %}

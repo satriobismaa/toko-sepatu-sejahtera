@@ -462,5 +462,65 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
         </ul>
         </li>
     </ol>
-</details>   
+</details> 
 
+<details>
+<Summary><b>Tugas 6</b></Summary>
+<ol>
+    <li>Apa perbedaan antara synchronous request dan asynchronous request?
+        <br>
+        <b>Synchronous request</b> adalah jenis permintaan di mana klien (seperti browser) mengirim permintaan ke server dan menunggu respons sebelum melanjutkan ke langkah berikutnya. Dalam konteks web, ini berarti bahwa ketika pengguna mengklik tautan atau mengirim formulir, browser akan menunggu hingga server merespons sebelum memperbarui halaman atau melakukan tindakan lain. Selama menunggu respons, pengguna tidak dapat berinteraksi dengan halaman web.
+        <br>  
+        Sedangkan, <b>asynchronous request</b> adalah jenis permintaan di mana klien mengirim permintaan ke server tetapi tidak menunggu respons sebelum melanjutkan ke langkah berikutnya. Dalam konteks web, ini berarti bahwa ketika pengguna mengklik tautan atau mengirim formulir, browser dapat terus berinteraksi dengan halaman web tanpa menunggu respons dari server. Respons dari server dapat diterima dan diproses di latar belakang, memungkinkan pembaruan halaman atau tindakan lain tanpa mengganggu pengalaman pengguna.
+    </li>
+    <br>
+    <li>Bagaimana AJAX bekerja di Django (alur request–response)?
+        <br>
+        AJAX (Asynchronous JavaScript and XML) bekerja di Django dengan memungkinkan komunikasi asinkron antara klien (browser) dan server tanpa perlu memuat ulang seluruh halaman. Berikut adalah alur request-response AJAX di Django:
+        <ol>
+            <li>Pertama, ketika user mengklik tombol atau submit form yang menggunakan AJAX, JavaScript mendeteksi event dan mengirim request ke Django menggunakan fetch() atau XMLHttpRequest.</li>
+            <li>Setelah itu, request akan diterima server dan Django akan mencocokkan URL dan meneruskan request ke view yang sesuai.</li>
+            <li>View menerima request dari AJAX, memproses data (misalnya dari database) sesuai fungsi yang dipanggil, lalu mengirim response dalam format JSON.</li>
+            <li>Django mengirimkan HTTP Response (dalam bentuk JSON) ke browser</li>
+            <li>JavaScript menerima response tersebut dan mengupdate DOM tanpa reload halaman</li>
+        </ol>
+    </li>
+    <br>
+    <li> Apa keuntungan menggunakan AJAX dibandingkan render biasa di Django?
+        <br>
+        <ul>
+            <li><b>Tidak perlu reload halaman tiap kali ada update</b>. AJAX hanya akan memperbarui bagian tertentu dari halaman (misalnya tabel, komentar, daftar produk), tanpa memuat ulang seluruh halaman.</li>
+            <li><b>Respons lebih cepat & efisien.</b> Hal ini dikarenakan hanya data yang dikirim (bukan seluruh HTML + CSS + JS), request–response jadi lebih ringan dan cepat.</li>
+            <li><b>Pengalaman pengguna (UX) lebih baik</b> karena Semua terasa instan dan interaktif seperti aplikasi desktop atau mobile.
+            Kita bisa juga menambahkan spinner/loading, notifikasi sukses, atau update konten real-time tanpa gangguan.</li>
+            <li><b>Fleksibilitas lebih tinggi</b> karena kita bisa mengirim dan menerima data dalam berbagai format (JSON, XML, HTML) sesuai kebutuhan aplikasi.</li>
+        </ul>
+    </li>
+    <br>
+    <li>Bagaimana cara memastikan keamanan saat menggunakan AJAX untuk fitur Login dan Register di Django?
+        <br>
+        <ul>
+            <li><b>Gunakan HTTPS</b> untuk mengenkripsi data yang dikirim antara klien dan server, sehingga mencegah penyadapan data sensitif seperti username dan password.</li>
+            <li><b>Validasi Input di Server</b> meskipun validasi juga dilakukan di klien, selalu lakukan validasi ulang di server untuk mencegah input berbahaya atau tidak valid.</li>
+            <li><b>Gunakan CSRF Protection</b> yang disediakan Django untuk melindungi dari serangan Cross-Site Request Forgery. Pastikan token CSRF disertakan dalam setiap request AJAX yang mengubah data di server.</li>
+            <li><b>Batasi Percobaan Login</b> untuk mencegah serangan brute force. Implementasikan mekanisme seperti rate limiting atau CAPTCHA setelah beberapa percobaan login gagal.</li>
+            <li><b>Simpan Password dengan Aman</b> menggunakan hashing (misalnya bcrypt) dan jangan pernah menyimpan password dalam bentuk teks asli.</li>
+            <li><b>Gunakan Library Terpercaya</b> untuk melakukan request AJAX, seperti jQuery atau Axios, yang sudah memiliki fitur keamanan bawaan.</li>
+            <li><b>Audit dan Monitor</b> aktivitas login dan registrasi untuk mendeteksi pola mencurigakan atau upaya serangan.</li>
+        </ul>
+    </li>
+    <br>
+    <li>Bagaimana AJAX mempengaruhi pengalaman pengguna (User Experience) pada website?
+        <br>
+        AJAX dapat secara signifikan meningkatkan pengalaman pengguna (User Experience) pada website dengan beberapa cara berikut:
+        <ul>
+            <li><b>Interaksi yang Lebih Cepat dan Responsif:</b> Dengan AJAX, pengguna dapat berinteraksi dengan halaman web tanpa perlu menunggu reload halaman penuh. Ini membuat aplikasi terasa lebih cepat dan responsif.</li>
+            <li><b>Pengurangan Waktu Tunggu:</b> Karena hanya bagian tertentu dari halaman yang diperbarui, waktu tunggu untuk mendapatkan data baru menjadi lebih singkat, sehingga pengguna
+            tidak perlu menunggu lama untuk melihat perubahan.</li>
+            <li><b>Pengalaman yang Lebih Mulus:</b> Transisi antar konten menjadi lebih halus tanpa gangguan yang disebabkan oleh reload halaman, sehingga pengguna dapat tetap fokus pada tugas mereka.</li>
+            <li><b>Interaktivitas yang Lebih Tinggi:</b> AJAX memungkinkan pembuatan fitur interaktif seperti live search, auto-suggestions, dan real-time updates yang meningkatkan keterlibatan pengguna.</li>
+            <li><b>Lebih Sedikit Gangguan terhadap Konteks Pengguna:</b> Karena dengan AJAX halaman tidak perlu selalu direload, pengguna menjadi tidak kehilangan hal seperti: scroll position, input yang sedang diketik, dan lain-lain.</li>
+        </ul>
+    </li>
+</ol>
+</details>

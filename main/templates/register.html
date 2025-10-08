@@ -115,4 +115,47 @@
     </div>
   </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const csrfToken = document.querySelector("[name=csrfmiddlewaretoken]").value;
+
+    // Hapus dulu pesan error lama
+    document.querySelectorAll(".error-msg").forEach(el => el.remove());
+
+    const response = await fetch("", {
+      method: "POST",
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+        "X-CSRFToken": csrfToken,
+      },
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      // tampilkan pesan sukses
+      alert(data.message);
+      window.location.href = data.redirect_url;
+    } else {
+      // tampilkan error per field
+      for (const [field, messages] of Object.entries(data.errors)) {
+        const input = document.querySelector(`[name=${field}]`);
+        if (input) {
+          const errorDiv = document.createElement("div");
+          errorDiv.className = "error-msg text-sm text-red-600 mt-1";
+          errorDiv.innerText = messages.join(", ");
+          input.insertAdjacentElement("afterend", errorDiv);
+        }
+      }
+    }
+  });
+});
+</script>
 {% endblock content %}
